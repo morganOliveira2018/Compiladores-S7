@@ -17,7 +17,6 @@ TEXTO "texto"
 
 LETRA [a-zA-Z]+
 NUMERO_REAL [0-9]+\.?[0-9]*
-STRING \".*\"
 RAIZ "raiz"
 
 
@@ -40,59 +39,31 @@ IGNORE [\s\t\n" "]
 %% 
 
 {INICIO} { 
-    return INICIO;       
+    printf("Inicio: %s\n", yytext);
 }
 
 {FIM} {    
-    return FIM;          
+    printf("Fim do programa %s\n", yytext);
 }
 
 {ATRIBUICAO} {
-    return ATRIBUICAO;
+    printf("Atribuicao: %s\n", yytext);
 }
 
 {INTEIRO} {
-    return INTEIRO;
+    printf("Int: %s\n", yytext);
 }
 
 {REAL} {
-    return REAL;
+    printf("Numero real: %s\n", yytext);
 }
 
 {VARIAVEL} {
-    strcpy (yylval.texto, yytext);
-    return VARIAVEL;
+    printf("Variavel: %s\n", yytext);
 }
 
 {TEXTO} {
-    return TEXTO;
-}
-
-{RAIZ} {
-    return RAIZ;
-}
-
-{LER} {
-    return LER;
-}
-
-{ESCREVER} {
-    return ESCREVER;
-}
-
-{COMENTARIO}..*|"/**"(..*|{IGNORE})*"*/" {;}
-
-{NUMERO_REAL} {
-    yylval.real = atof(yytext);
-    return NUM_REAL;
-}
-
-{STRING} {
-    strcpy(yylval.texto, yytext);
-}
-
-{LOGICO} {
-    printf(" Apenas léxico. Operador lógico: %s\n", yytext);
+    printf("Apenas léxico. Texto: %s\n", yytext);
 }
 
 {CONDICIONAL} {   
@@ -100,10 +71,34 @@ IGNORE [\s\t\n" "]
 }
 
 {REPETICAO} {
-    printf ("Apenas léxico. Estrutura de repeticao:" %s\n" yytext);
+    printf ("Apenas léxico. Estrutura de repeticao: %s\n" yytext);
 }
 
-{INVALIDO} {;}
+{LER} {
+    printf("Apenas léxico. Estrutura de leitura: %s\n", yytext);
+}
+
+{ESCREVER} {
+    printf('%s\n', yytext);
+}
+
+{COMENTARIO}..*|"/**"(..*|{IGNORE})*"*/" {;}
+
+{NUMERO_REAL} {
+    printf('%s\n', yytext);
+}
+
+{LOGICO} {
+    printf("Apenas léxico. Operador lógico: %s\n", yytext);
+}
+
+{RAIZ} {
+    printf('%s\n', yytext);
+}
+
+. {
+    printf("Caractere invalido: %s\n", yytext);
+}
 
 %%
 
