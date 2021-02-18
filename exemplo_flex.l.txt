@@ -1,0 +1,22 @@
+prog1.di
+
+45
+Diego
+
+Palmeiras
+
+FIM
+
+Comandos:
+flex -i exemplo_flex.l
+gcc lex.yy.c -o MeuCompilador -lfl
+executar código: ./MeuCompilador
+
+makefile
+all: exemplo_flex.l
+     flex -i exemplo_flex.l
+     gcc lex.yy.c -o MeuCompilador -lfl
+     clear
+     ./MeuCompilador
+     
+No windows: int yywrap(){ return 1;}
