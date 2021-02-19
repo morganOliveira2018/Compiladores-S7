@@ -15,4 +15,7 @@ Inicio
   ELSE IF
     escreva << "Vixii, você reprovou :("
 
+  REPETE i == 0, i++, i < 10
+    escreva << "Você deve manter o foco nos estudos sempre!" 
+
 Fim do programa

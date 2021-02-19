@@ -35,7 +35,7 @@ COND3 "ELSE IF"
 COMENTARIO "//".*
 CONDICIONAL ({COND1}|{COND2}|{COND3})*
 
-VARIAVEL {LETRA}({LETRA}|{NUMERO}|"-"|"_"|",")*
+VARIAVEL {LETRA}({LETRA}|{NUMERO}|"-"|"_")*
 LER "leia"(" ")*">>"(" ")*{VARIAVEL}
 ESCREVER "escreva"(" ")*"<<"(" ")*({VARIAVEL}|\".*\")*
 REPETICAO "REPETE"(" ")?"(".+")"
