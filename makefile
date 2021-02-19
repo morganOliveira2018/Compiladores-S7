@@ -1,5 +1,5 @@
 all: 
-	 flex -i exemplo_flex.l
-	 gcc lex.yy.c -o prog
-	 ./prog
+	 flex -i exemplo_tentativa.l
+	 gcc lex.yy.c -o test
+	 ./test 
 	 

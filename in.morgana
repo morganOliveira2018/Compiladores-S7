@@ -1,21 +1,27 @@
+string nome
+int idade
 real a, b, media
 
+
 Inicio
-  escreva << "Sua primeira nota" // o usuário vai digitar a primeira nota
+  escreva << "Seu nome" @@ o usuário vai inserir seu nome 
+  leia >> nome
+
+  escreva << "Sua idade" @@ o usuário vai inserir sua idade
+  leia >> idade
+  
+  escreva << "Sua primeira nota" @@ o usuário vai digitar a primeira nota
   leia >> a
 
-  escreva << "Sua segunda nota" // o usuário vai digitar a segunda nota
+  escreva << "Sua segunda nota" @@ o usuário vai digitar a segunda nota
   leia >> b
 
   media << a + b / 2
   escreva << "Sua média é ", media
 
-  SE    media > 7
+  IF media > 7
     escreva << "Você passou, meus Parabêns! Não fez mais do que sua obrigação!"
-  ELSE IF
+  ELSE 
     escreva << "Vixii, você reprovou :("
-
-  REPETE i == 0, i++, i < 10
-    escreva << "Você deve manter o foco nos estudos sempre!" 
 
 Fim do programa
