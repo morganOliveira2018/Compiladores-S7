@@ -666,8 +666,8 @@ int yy_flex_debug = 0;
 #define YY_MORE_ADJ 0
 #define YY_RESTORE_YY_MORE_OFFSET
 char *yytext;
-#line 1 "exemplo_tentativa.l"
-#line 3 "exemplo_tentativa.l"
+#line 1 "calculadora_flex.l"
+#line 3 "calculadora_flex.l"
     // int yywrap(){ return 1;}
 
 // código C, bibliotecas, funcoes
@@ -680,7 +680,7 @@ char *yytext;
 // makefile - todos os comandos em sequencia
 
 #line 682 "lex.yy.c"
-#line 18 "exemplo_tentativa.l"
+#line 18 "calculadora_flex.l"
     // definicoes regulares
 #line 685 "lex.yy.c"
 
@@ -899,7 +899,7 @@ YY_DECL
 		}
 
 	{
-#line 50 "exemplo_tentativa.l"
+#line 50 "calculadora_flex.l"
 
 
     // tokens ou regras
@@ -962,14 +962,14 @@ do_action:	/* This label is used only to access EOF actions. */
 
 case 1:
 YY_RULE_SETUP
-#line 53 "exemplo_tentativa.l"
+#line 53 "calculadora_flex.l"
 { 
     printf("Identificador de início do programa: %s\n", yytext); 
 }
 	YY_BREAK
 case 2:
 YY_RULE_SETUP
-#line 56 "exemplo_tentativa.l"
+#line 56 "calculadora_flex.l"
 { 
     printf("Identificador de fim do programa: %s\n", yytext); 
 }
@@ -977,131 +977,131 @@ YY_RULE_SETUP
 case 3:
 /* rule 3 can match eol */
 YY_RULE_SETUP
-#line 60 "exemplo_tentativa.l"
+#line 60 "calculadora_flex.l"
 { /* ignore */ }
 	YY_BREAK
 case 4:
 YY_RULE_SETUP
-#line 62 "exemplo_tentativa.l"
+#line 62 "calculadora_flex.l"
 { 
     printf("Estrutura condicional: %s\n", yytext); 
 }
 	YY_BREAK
 case 5:
 YY_RULE_SETUP
-#line 65 "exemplo_tentativa.l"
+#line 65 "calculadora_flex.l"
 { 
     printf("Estrutura de repeticao: %s\n", yytext); 
 }
 	YY_BREAK
 case 6:
 YY_RULE_SETUP
-#line 69 "exemplo_tentativa.l"
+#line 69 "calculadora_flex.l"
 { 
     printf("Tipo inteiro: %s\n", yytext); 
 }
 	YY_BREAK
 case 7:
 YY_RULE_SETUP
-#line 72 "exemplo_tentativa.l"
+#line 72 "calculadora_flex.l"
 { 
     printf("Tipo real: %s\n", yytext); 
 }
 	YY_BREAK
 case 8:
 YY_RULE_SETUP
-#line 75 "exemplo_tentativa.l"
+#line 75 "calculadora_flex.l"
 {
     printf("Tipo booleano: %s\n", yytext); 
 }
 	YY_BREAK
 case 9:
 YY_RULE_SETUP
-#line 78 "exemplo_tentativa.l"
+#line 78 "calculadora_flex.l"
 {
     printf("Tipo real: %s\n", yytext);
 }
 	YY_BREAK
 case 10:
 YY_RULE_SETUP
-#line 81 "exemplo_tentativa.l"
+#line 81 "calculadora_flex.l"
 { 
     printf("Tipo texto: %s\n", yytext); 
 }
 	YY_BREAK
 case 11:
 YY_RULE_SETUP
-#line 84 "exemplo_tentativa.l"
+#line 84 "calculadora_flex.l"
 { 
     printf("Variável: %s\n", yytext); 
 }
 	YY_BREAK
 case 12:
 YY_RULE_SETUP
-#line 87 "exemplo_tentativa.l"
+#line 87 "calculadora_flex.l"
 { 
     printf("Comentário: %s\n", yytext); 
 }
 	YY_BREAK
 case 13:
 YY_RULE_SETUP
-#line 90 "exemplo_tentativa.l"
+#line 90 "calculadora_flex.l"
 { 
     printf("Operação de leitura: %s\n", yytext); 
 }
 	YY_BREAK
 case 14:
 YY_RULE_SETUP
-#line 93 "exemplo_tentativa.l"
+#line 93 "calculadora_flex.l"
 { 
     printf("Operação de escrita: %s\n", yytext); 
 }
 	YY_BREAK
 case 15:
 YY_RULE_SETUP
-#line 96 "exemplo_tentativa.l"
+#line 96 "calculadora_flex.l"
 { 
     printf("Número: %s\n", yytext); 
 }
 	YY_BREAK
 case 16:
 YY_RULE_SETUP
-#line 99 "exemplo_tentativa.l"
+#line 99 "calculadora_flex.l"
 { 
     printf("String: %s\n", yytext); 
 }
 	YY_BREAK
 case 17:
 YY_RULE_SETUP
-#line 103 "exemplo_tentativa.l"
+#line 103 "calculadora_flex.l"
 { 
     printf("Operador aritmético: %s\n", yytext); 
 }
 	YY_BREAK
 case 18:
 YY_RULE_SETUP
-#line 106 "exemplo_tentativa.l"
+#line 106 "calculadora_flex.l"
 {
     printf("Operador relacional: %s\n", yytext);
 }
 	YY_BREAK
 case 19:
 YY_RULE_SETUP
-#line 109 "exemplo_tentativa.l"
+#line 109 "calculadora_flex.l"
 { 
     printf("Operador lógico: %s\n", yytext); 
 }
 	YY_BREAK
 case 20:
 YY_RULE_SETUP
-#line 112 "exemplo_tentativa.l"
+#line 112 "calculadora_flex.l"
 { 
     printf("Caractere inválido: %s\n", yytext); 
 }
 	YY_BREAK
 case 21:
 YY_RULE_SETUP
-#line 116 "exemplo_tentativa.l"
+#line 116 "calculadora_flex.l"
 ECHO;
 	YY_BREAK
 #line 1107 "lex.yy.c"
@@ -2109,13 +2109,13 @@ void yyfree (void * ptr )
 
 #define YYTABLES_NAME "yytables"
 
-#line 116 "exemplo_tentativa.l"
+#line 116 "calculadora_flex.l"
 
 
 
-// código C
+// código fonte em C
 int main(){
-    // yyin = fopen("in.morgana", "r");
+    yyin = fopen("in.morgana", "r");
     yylex();  
     fclose (yyin);
 

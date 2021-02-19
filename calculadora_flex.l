@@ -117,7 +117,7 @@ INVALIDO .
 
 // código fonte em C
 int main(){
-    // yyin = fopen("in.morgana", "r");
+    yyin = fopen("in.morgana", "r");
     yylex();  
     fclose (yyin);
 
