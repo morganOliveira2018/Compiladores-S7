@@ -1,111 +1,79 @@
+%option noyywrap
+int yywrap(){ return 1;}
+
 %{
 
-// código C
+// código C, bibliotecas, funcoes
 #include <string.h>
 #include <stdio.h>
+#include <locale.h> // biblioteca para reconhecer caracteres especiais
 // flex -i exemplo_flex.l
-// gcc analisador.c -o prog
+// gcc lex.yy.c -o prog
 // ./prog
+// makefile - todos os comandos em sequencia
 
 %}
 
 
+INICIO "Inicio"
+FIM "Fim do programa"
 
 INTEIRO "inteiro"
 REAL "real"
 TEXTO "texto"
 
+NUMERO [0-9]+
 LETRA [a-zA-Z]+
-NUMERO_REAL [0-9]+\.?[0-9]*
-RAIZ "raiz"
+STRING \".*\"
 
+ARITMETICO "+"|"-"|"*"|"/"
+LOGICO ">"|"<"|"=="
+COND1 "SE"(" ")?
+COND2 "ELSE"
+COND3 "ELSE IF"
 
-VARIAVEL {LETRA}({LETRA} | {NUMERO} | "," | "-" | "_")*
-ATRIBUICAO "<<"
+COMENTARIO "//".*
+CONDICIONAL ({COND1}|{COND2}|{COND3})*
 
-LER "leia"
-ESCREVER "escreva"
-
-INICIO "inicio"
-FIM "fim"
-
-LOGICO "<" | "<=" | ">" | ">=""
-CONDICIONAL "SENAO SE" | "SE" | "SENAO"
-REPETICAO "REPETE"
-
-COMENTARIO "!".*
-IGNORE [\s\t\n" "]
-
-%% 
-
-{INICIO} { 
-    printf("Inicio: %s\n", yytext);
-}
-
-{FIM} {    
-    printf("Fim do programa %s\n", yytext);
-}
-
-{ATRIBUICAO} {
-    printf("Atribuicao: %s\n", yytext);
-}
-
-{INTEIRO} {
-    printf("Int: %s\n", yytext);
-}
-
-{REAL} {
-    printf("Numero real: %s\n", yytext);
-}
-
-{VARIAVEL} {
-    printf("Variavel: %s\n", yytext);
-}
-
-{TEXTO} {
-    printf("Apenas léxico. Texto: %s\n", yytext);
-}
-
-{CONDICIONAL} {   
-    printf("Apenas léxico. Estrutura condicional: %s\n", yytext);
-}
-
-{REPETICAO} {
-    printf ("Apenas léxico. Estrutura de repeticao: %s\n" yytext);
-}
-
-{LER} {
-    printf("Apenas léxico. Estrutura de leitura: %s\n", yytext);
-}
-
-{ESCREVER} {
-    printf('%s\n', yytext);
-}
-
-{COMENTARIO}..*|"/**"(..*|{IGNORE})*"*/" {;}
-
-{NUMERO_REAL} {
-    printf('%s\n', yytext);
-}
-
-{LOGICO} {
-    printf("Apenas léxico. Operador lógico: %s\n", yytext);
-}
-
-{RAIZ} {
-    printf('%s\n', yytext);
-}
-
-. {
-    printf("Caractere invalido: %s\n", yytext);
-}
+VARIAVEL {LETRA}({LETRA}|{NUMERO}|"-"|"_"|",")*
+LER "leia"(" ")*">>"(" ")*{VARIAVEL}
+ESCREVER "escreva"(" ")*"<<"(" ")*({VARIAVEL}|\".*\")*
+REPETICAO "REPETE"(" ")?"(".+")"
+INVALIDO .
 
 %%
 
-int yywrap(){ return 1;}
+{INICIO} { printf("Identificador de início do programa: %s\n", yytext); }
+{FIM} { printf("Identificador de fim do programa: %s\n", yytext); }
+
+"\n"|" "|"\t"|","|"<<"|"("|")" { /* ignore */ }
+
+{CONDICIONAL} { printf("Estrutura condicional: %s\n", yytext); }
+{REPETICAO} { printf("Estrutura de repeticao: %s\n", yytext); }
+
+{INTEIRO} { printf("Tipo inteiro: %s\n", yytext); }
+{REAL} { printf("Tipo real: %s\n", yytext); }
+{TEXTO} { printf("Tipo texto: %s\n", yytext); }
+{VARIAVEL} { printf("Variável: %s\n", yytext); }
+
+{COMENTARIO} { printf("Comentário: %s\n", yytext); }
+{LER} { printf("Operação de leitura: %s\n", yytext); }
+{ESCREVER} { printf("Operação de escrita: %s\n", yytext); }
+
+{NUMERO} { printf("Número: %s\n", yytext); }
+{STRING} { printf("String: %s\n", yytext); }
+{ARITMETICO} { printf("Operador aritmético: %s\n", yytext); }
+{LOGICO} { printf("Operador lógico: %s\n", yytext); }
+
+{INVALIDO} { printf("Caractere inválido: %s\n", yytext); }
+
+%%
+
+
 // código C
 int main(){
-    
+    setlocale(LC_ALL,"Portuguese");
+
     yyin = fopen("in.morgana", "r");
     yylex();
     fclose (yyin);
