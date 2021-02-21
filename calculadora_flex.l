@@ -1,5 +1,4 @@
 %option noyywrap
-    // int yywrap(){ return 1;}
 
 %{
 
@@ -30,8 +29,11 @@ FLOAT {NUMERO}+("."){NUMERO}+
 STRING \".*\" 
 
 ARITMETICO "+"|"-"|"*"|"/"|"raiz"
+EXP {NUMERO}^{NUMERO}
 LOGICO "&&"|"or"|"true"|"false"
 RELACIONAIS ">"|">="|"<"|"<="|"=="|"!="
+ATRIBUICAO "="
+
 
 COND1 "IF"
 COND2 "ELSE"
@@ -56,7 +58,9 @@ INVALIDO .
     printf("Identificador de fim do programa: %s\n", yytext); 
 }
 
-"\n"|" "|"\t"|","|"<<"|"("|")" { /* ignore */ }
+"\n"|" "|"\t"|","|"("|")" { 
+    /* ignore */ 
+}
 
 {CONDICIONAL} { 
     printf("Estrutura condicional: %s\n", yytext); 
@@ -81,35 +85,41 @@ INVALIDO .
     printf("Tipo texto: %s\n", yytext); 
 }
 {VARIAVEL} { 
-    printf("Variável: %s\n", yytext); 
+    printf("Variavel: %s\n", yytext); 
 }
 {COMENTARIO} { 
-    printf("Comentário: %s\n", yytext); 
+    printf("Comentario: %s\n", yytext); 
 }
 {LER} { 
-    printf("Operação de leitura: %s\n", yytext); 
+    printf("Operacao de leitura: %s\n", yytext); 
 }
 {ESCREVER} { 
-    printf("Operação de escrita: %s\n", yytext); 
+    printf("Operacao de escrita: %s\n", yytext); 
 }
 {NUMERO} { 
-    printf("Número: %s\n", yytext); 
+    printf("Numero: %s\n", yytext); 
 }
 {STRING} { 
     printf("String: %s\n", yytext); 
 }
 
 {ARITMETICO} { 
-    printf("Operador aritmético: %s\n", yytext); 
+    printf("Operador aritmetico: %s\n", yytext); 
+}
+{EXP} {
+    printf("Operacao exponencial: %s\n", yytext);
 }
 {RELACIONAIS} {
     printf("Operador relacional: %s\n", yytext);
 }
+{ATRIBUICAO} {
+    printf("Operador atribuicao: %s\n", yytext);
+}
 {LOGICO} { 
-    printf("Operador lógico: %s\n", yytext); 
+    printf("Operador logico: %s\n", yytext); 
 }
 {INVALIDO} { 
-    printf("Caractere inválido: %s\n", yytext); 
+    printf("Caractere invalido: %s\n", yytext); 
 }
 
 %%
